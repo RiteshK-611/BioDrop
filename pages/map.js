@@ -62,6 +62,7 @@ export async function getStaticProps() {
         tags: user.tags || [],
         username: user.username,
         name: user.name,
+        pronoun: user.pronoun,
         location: user.location.provided,
         bio: user.bio || "",
       },

@@ -27,6 +27,11 @@ const ProfileSchema = new Schema(
         message: "{VALUE} is not a supported profile layout",
       },
     },
+    pronoun: {
+      type: String,
+      required: true,
+      default: "they/them",
+    },
     isEnabled: {
       type: Boolean,
       default: true,

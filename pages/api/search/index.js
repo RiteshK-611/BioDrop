@@ -31,6 +31,7 @@ export default async function handler(req, res) {
     filteredUsers = users.flat().filter((user) => {
       const nameLower = user.name.toLowerCase();
       const usernameLower = user.username.toLowerCase();
+      const pronounLower = user.pronoun.toLowerCase();  
       const userTagsString = user.tags.join(", ").toLowerCase();
       const userLocationString = user.location
         ? user.location.provided.toLowerCase()
@@ -42,6 +43,7 @@ export default async function handler(req, res) {
         return (
           usernameLower.includes(cleanedTerm) ||
           nameLower.includes(cleanedTerm) ||
+          pronounLower.includes(cleanedTerm) ||
           userTagsString.includes(cleanedTerm) ||
           userLocationString.includes(cleanedTerm)
         );

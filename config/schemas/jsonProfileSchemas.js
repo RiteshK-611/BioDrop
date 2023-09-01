@@ -25,6 +25,7 @@ const milestoneSchema = z.object({
 
 const profileSchema = z.object({
   name: z.string().optional(),
+  pronoun: z.string().optional(),
   bio: z.string().optional(),
   tags: z.array(z.string()).optional(),
   socials: z.array(socialSchema).optional(),

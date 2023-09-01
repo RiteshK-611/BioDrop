@@ -19,8 +19,8 @@ export async function getProfiles(options = {}) {
   let profiles = [];
   const { cards } = { cards: false, ...options };
   const fields = cards
-    ? ["username", "name", "bio", "tags", "-_id"]
-    : ["username", "name", "bio", "tags", "location", "-_id"];
+    ? ["username", "name", "pronoun", "bio", "tags", "-_id"]
+    : ["username", "name", "pronoun", "bio", "tags", "location", "-_id"];
   try {
     profiles = await Profile.find(
       { name: { $exists: true }, isEnabled: true },

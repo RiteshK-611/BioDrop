@@ -68,6 +68,7 @@ export default function Profile({ BASE_URL, profile, fileExists }) {
     additionalMessage: "",
   });
   const [layout, setLayout] = useState(profile.layout || "classic");
+  const [pronoun, setPronoun] = useState(profile.pronoun || "they/them");
   const [name, setName] = useState(profile.name || "Your name");
   const [isStatsPublic, setIsStatsPublic] = useState(
     profile.isStatsPublic ? true : false
@@ -82,6 +83,12 @@ export default function Profile({ BASE_URL, profile, fileExists }) {
       label: l,
     };
   });
+  const pronouns = config.pronouns.map((l) => {
+    return {
+      value: l,
+      label: l,
+    };
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -90,7 +97,7 @@ export default function Profile({ BASE_URL, profile, fileExists }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, bio, tags, layout, isStatsPublic }),
+      body: JSON.stringify({ name, bio, tags, layout, pronoun, isStatsPublic }),
     });
     const update = await res.json();
 
@@ -191,6 +198,18 @@ export default function Profile({ BASE_URL, profile, fileExists }) {
                           value={layout}
                           options={layouts}
                           onChange={(e) => setLayout(e.target.value)}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="col-span-3 sm:col-span-4">
+                      <div className="mt-1">
+                        <Select
+                          name="pronoun"
+                          label="Pronoun"
+                          value={pronoun}
+                          options={pronouns}
+                          onChange={(e) => setPronoun(e.target.value)}
                         />
                       </div>
                     </div>

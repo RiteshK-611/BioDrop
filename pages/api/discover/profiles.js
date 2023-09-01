@@ -20,7 +20,7 @@ export async function getProfiles() {
   try {
     profiles = await Profile.find(
       { name: { $exists: true }, isEnabled: true },
-      ["_id", "bio", "name", "username", "avatar", "tags", "updatedAt"]
+      ["_id", "bio", "name", "username", "avatar", "tags", "updatedAt", "pronoun"]
     )
       .sort({ updatedAt: -1 })
       .limit(9);
